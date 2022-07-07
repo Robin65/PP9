@@ -1,0 +1,11 @@
+application_main_a2: application_staticlibaries input_stream
+	gcc -o main_a2.elf main_a2.c -l_static_gauss -lm
+ 
+application_staticlibaries:
+	gcc -c static_gauss.c -lm
+	ar -crs lib_static_gauss.a static_gauss.o
+	sudo cp static_gauss.h /usr/include
+	sudo cp lib_static_gauss.a /usr/lib
+
+input_stream:
+	gcc input_stream.c
